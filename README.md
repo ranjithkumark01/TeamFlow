@@ -1,69 +1,100 @@
 # TeamFlow
 
-TeamFlow is a full-stack project management and RCA workflow application built with React, Spring Boot, and PostgreSQL.
+## Project Overview
 
-## Stack
+TeamFlow is a full-stack collaborative platform designed for software engineering teams to manage projects, tasks, incident investigations (RCA), notifications, and reporting from a single application. It provides an easy-to-use interface for planning, tracking, and collaborating on projects while improving team productivity and visibility.
 
-- Frontend: React 18, Vite, Tailwind CSS, React Router, Axios, React Hook Form
-- Backend: Spring Boot 3, Java 21, Maven, Spring Security, JWT, JPA, Flyway
-- Database: PostgreSQL
-- Deployment: Docker Compose
+---
 
-## Features
+## Features Implemented
 
-- JWT registration, login, logout, and protected routes
-- Role model: `ADMIN`, `MANAGER`, `DEVELOPER`, `REVIEWER`
-- Project, task, dependency, comment, attachment, notification, RCA, and review workflows
-- Drag-and-drop Kanban board with persisted task status updates
-- Calendar view from task due dates
-- Task dependency validation with cycle prevention
-- File upload/download for task attachments
-- Notification center with optional email notification delivery
-- RCA creation and review workflow
-- Dashboard analytics
-- Reports and CSV export
-- Search and filters
-- User profile editing
-- Light/dark theme persistence
-- Responsive desktop, tablet, and mobile layout
+- User Registration & Login
+- JWT Authentication & Authorization
+- Project Management
+- Task Management
+- Kanban, Calendar & List Views
+- Task Dependencies
+- Root Cause Analysis (RCA)
+- Review Workflow
+- In-App Notifications
+- Dashboard & Reports
+- CSV Export
+- Light & Dark Theme
+- Responsive User Interface
+- Database Migration using Flyway
+
+---
+
+## Technologies Used
+
+### Frontend
+- React.js
+- Vite
+- HTML
+- CSS
+- JavaScript
+
+### Backend
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Hibernate
+
+### Database
+- PostgreSQL
+- Flyway Migration
+
+### Build Tools
+- Maven
+- npm
+
+### Version Control
+- Git
+- GitHub
+
+---
+
+## Software Requirements
+
+- Java 21
+- Node.js (LTS)
+- Maven
+- PostgreSQL
+- Git
+
+---
 
 ## Project Structure
 
-```text
-frontend/   React application
-backend/    Spring Boot API
-database/   PostgreSQL schema and migration references
-docs/       Architecture, API, deployment, and verification docs
+```
+TeamFlow
+│
+├── backend
+├── frontend
+├── database
+├── docs
+├── README.md
+└── docker-compose.yml
 ```
 
-## Run With Docker
+---
+
+## Setup Instructions
+
+### Clone Repository
 
 ```bash
-docker compose up --build
+git clone <repository-url>
 ```
 
-Frontend: `http://localhost:3000`  
-Backend: `http://localhost:8080`  
-PostgreSQL: `localhost:5432`
-
-## Run Locally
-
-Start PostgreSQL first with database/user/password:
-
-```text
-database: teamflow
-user: teamflow
-password: teamflow
-```
-
-Backend:
+### Backend Setup
 
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-Frontend:
+### Frontend Setup
 
 ```bash
 cd frontend
@@ -71,30 +102,98 @@ npm install
 npm run dev
 ```
 
-Frontend dev URL: `http://localhost:5173`
+Frontend runs on:
 
-## Auth
-
-Public endpoints:
-
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-
-All other endpoints require:
-
-```http
-Authorization: Bearer <jwt>
+```
+http://localhost:5173
 ```
 
-## Documentation
+Backend runs on:
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [ER Diagram](docs/ER_DIAGRAM.md)
-- [API Documentation](docs/API.md)
-- [Docker Deployment](docs/DOCKER.md)
-- [Testing Report](docs/TESTING_REPORT.md)
+```
+http://localhost:8080
+```
 
-## Verification Summary
+---
 
-Both backend and frontend compile successfully. Frontend dev server starts successfully. Backend startup requires PostgreSQL; in this workspace PostgreSQL and Docker were not installed/running, so database-backed runtime E2E tests are documented as environment-blocked in the testing report.
+## Database Configuration
 
+Before running the application, update the PostgreSQL configuration in:
+
+```
+backend/src/main/resources/application.properties
+```
+
+Example:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:<your_postgresql_port>/teamflow
+spring.datasource.username=postgres
+spring.datasource.password=<your_postgresql_password>
+```
+
+Replace:
+
+- `<your_postgresql_port>` with your PostgreSQL port.
+- `<your_postgresql_password>` with your PostgreSQL password.
+
+---
+
+## Environment Variables
+
+Configure the following values in `application.properties`.
+
+- Database URL
+- Database Username
+- Database Password
+- JWT Secret
+- JWT Expiration
+
+---
+
+## Assumptions
+
+- PostgreSQL is installed locally.
+- The TeamFlow database has been created before starting the application.
+- Java 21 is installed.
+- Node.js and npm are installed.
+- Maven is installed.
+
+---
+
+## Known Limitations
+
+- Email notifications are basic.
+- Internet connection is required.
+- Local database configuration is required.
+- No cloud deployment.
+- Limited admin features.
+
+---
+
+## Future Improvements
+
+- Real-time notifications
+- File sharing
+- Team chat
+- Cloud deployment
+- Mobile application
+- AI-based task recommendations
+- Performance optimization
+
+---
+
+## Author
+
+**Ranjith Kumar**
+
+B.Tech – Information Technology
+
+GitHub Repository:
+(Add your GitHub repository link here)
+
+---
+
+## License
+
+This project is developed for educational and assignment purposes.
