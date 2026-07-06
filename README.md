@@ -190,7 +190,8 @@ Configure the following values in `application.properties`.
 B.Tech – Information Technology
 
 GitHub Repository:
-(Add your GitHub repository link here)
+GitHub Repository:
+https://github.com/ranjithkumark01/TeamFlow
 
 ---
 
